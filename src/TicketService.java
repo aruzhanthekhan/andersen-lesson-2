@@ -1,14 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class TicketService {
+
+    static List<Ticket> tickets;
+
     public static void main(String[] args) {
-        Ticket fullTicket = new Ticket("123A", "ConcertHall1", 123,
-                1672522561L, true, 'B', 5.5);
 
-        Ticket limitedTicket = new Ticket("ConcertHall2", 124, 1672525561L);
+        tickets = new ArrayList<>();
 
-        Ticket emptyTicket = new Ticket();
-
-        System.out.println(fullTicket);
-        System.out.println(limitedTicket);
-        System.out.println(emptyTicket);
+        for (int i=0; i < 10; i++) {
+            tickets.add(new Ticket(String.format("%d%d%d%d", i, i, i, i),
+                    "ConcertHall" + i, i+101, System.currentTimeMillis(),
+                    false, 'A', 2.1));
+        }
     }
 }
