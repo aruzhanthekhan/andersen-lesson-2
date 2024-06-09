@@ -15,5 +15,16 @@ public class TicketService {
                     "ConcertHall" + i, i+101, System.currentTimeMillis(),
                     false, 'A', 2.1));
         }
+
+        System.out.println(getTicketById("1111"));
+    }
+
+    public static Ticket getTicketById (String ticketId) {
+        for (Ticket ticket: tickets) {
+            if (Objects.equals(ticket.ticketID, ticketId)) {
+                return ticket;
+            }
+        }
+        return null;
     }
 }
