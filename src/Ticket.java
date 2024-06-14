@@ -1,4 +1,5 @@
 import java.time.Instant;
+import java.util.Objects;
 
 public class Ticket {
     String ticketID;
@@ -55,5 +56,30 @@ public class Ticket {
                 ", Promo: " + readablePromo +
                 ", Stadium sector: " + stadiumSector +
                 ", Backpack weight: " + backpackWeight + " kg";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (!(obj instanceof Ticket))
+            return false;
+        if (obj == this)
+            return true;
+        return Objects.equals(this.ticketID, ((Ticket) obj).ticketID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ticketID, concertHall, eventCode, ticketTime, isPromo, stadiumSector, backpackWeight);
+    }
+
+    public void changeTimeAndSector(long ticketTime, char stadiumSector) {
+        this.ticketTime = ticketTime;
+        this.stadiumSector = stadiumSector;
+        System.out.println("Time and stadium sector of this ticket has been altered");
+    }
+
+    public void share(Shareable shareable) {
+        shareable.share();
     }
 }
